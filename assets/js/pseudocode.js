@@ -1,18 +1,8 @@
 // need questions
     // can use array of objects and pass values to DOM 
     // let questions = [
-    //     question1 = {
-    //         question: "value"
-    //         answer: "value"
-    //         answer: "value"
-    //         answer: "value"
-    //     },
-    // question2 = {
-    //         question: "value"
-    //         answer: "value"
-    //         answer: "value"
-    //         answer: "value"
-    //     }
+    //     {question: "value", answer: "value", answer: "value" answer: "value"},
+    //     {question: "value", answer: "value", answer: "value", answer: "value"}
     // ]
 
 
