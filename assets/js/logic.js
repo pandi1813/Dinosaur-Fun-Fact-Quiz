@@ -21,10 +21,24 @@ let feedback = document.querySelector("#feedback");
    // hide start screen and remove .hide class from questions screen
 
    startButton.addEventListener("click", function (event) {
-       startScreen.classList.add("hide")
-       questionsDiv.classList.remove("hide")
+       startScreen.classList.add("hide");
+       questionsDiv.classList.remove("hide");
        showQuestion();
+       timer();
    })
+
+// timer
+function timer(params) {
+    let timer = 60
+    
+    let intervalId = setInterval(function() {
+        timer--
+        console.log(timer)
+        timerCount.textContent = timer;
+    }, 1000);
+
+}
+
 
 // displaying questions and answer options
 
@@ -50,7 +64,7 @@ choices.addEventListener("click", function(event) {
     // questionIndex++;
     if (event.target.matches("button")) {
         console.log("test")
-        choices.textContent = ""
+        choices.textContent = "" //clears the buttons from previous question
         questionIndex++
         console.log(questionIndex);
         showQuestion()

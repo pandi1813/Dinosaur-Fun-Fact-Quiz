@@ -6,6 +6,6 @@ let questions = [
     {question: "Which was the dumbest dinosaur?", answers: ["Stegosaurus", "Brachiosaurus", "Triceratops", "Edmontosaurus"], correct: 0},
     {question: "Which was the largest carnivorous dinosaur?", answers: ["Tyrannosaurus Rex", "Spinosaurus", "Gigantosaurus", "Indominus Rex"], correct: 1},
     {question: "Which was the heaviest dinosaur weighing as much as 17 african elephants?", answers: ["Brachiosaurus", "Notocolossus", "Megalodon", "Argentinosaurus"], correct: 3},
-    {question: "", answers: ["", "", "", ""], correct: 0},
+    // {question: "", answers: ["", "", "", ""], correct: 0},
 
 ]
