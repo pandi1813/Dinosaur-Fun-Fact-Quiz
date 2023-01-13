@@ -6,6 +6,10 @@
     // ]
 
 
+    //display questions + answers
+            // for loop to display choices?
+            // create var for question number index - when clicked on choice button increase the question index
+
     // buttons for each answer
         // .createElement("")
         // .textContent(object.value)
