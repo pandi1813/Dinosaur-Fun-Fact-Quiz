@@ -17,34 +17,43 @@ let feedback = document.querySelector("#feedback");
 
 
 
+// starting quiz
+   // hide start screen and remove .hide class from questions screen
+
+   startButton.addEventListener("click", function (event) {
+       startScreen.classList.add("hide")
+       questionsDiv.classList.remove("hide")
+       showQuestion();
+   })
+
 // displaying questions and answer options
 
 let questionIndex = 0; // increment this when clicked on an answer to go to the next question
-let displayQuestion =  questionTitle.textContent = questions[questionIndex].question;
-
-let choicesArray = questions[questionIndex].answers;
+// let displayQuestion =  questionTitle.textContent = questions[questionIndex].question;
 
 
+let choiceButton;
 
-
-for (let i = 0; i < choicesArray.length; i++) { // loop to display all choices
-    let choiceButton = document.createElement("button");
-    let choice = choicesArray[i];
-    choices.append(choiceButton);
-    choiceButton.textContent = choice;
-
-    choiceButton.addEventListener("click", function() {
-        questionIndex++;
-    })
+function showQuestion() {
+    let choicesArray = questions[questionIndex].answers;
+    questionTitle.textContent = questions[questionIndex].question;
+    for ( let i = 0; i < choicesArray.length; i++) { // loop to display all choices
+        choiceButton = document.createElement("button");
+        let choice = choicesArray[i];
+        choices.append(choiceButton);
+        choiceButton.textContent = choice;
+        
+    }
 }
 
-
+choices.addEventListener("click", function(event) {
+    // questionIndex++;
+    if (event.target.matches("button")) {
+        console.log("test")
+        choices.textContent = ""
+        questionIndex++
+        console.log(questionIndex);
+        showQuestion()
+    }
+})
     
- 
-// starting quiz
-    // hide start screen and remove .hide class from questions screen
-
-    startButton.addEventListener("click", function () {
-        startScreen.classList.add("hide")
-        questionsDiv.classList.remove("hide")
-    })
