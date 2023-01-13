@@ -29,13 +29,19 @@ let feedback = document.querySelector("#feedback");
 
 // timer
 function timer(params) {
-    let timer = 60
+    let timer = 10
     
     let intervalId = setInterval(function() {
         timer--
-        console.log(timer)
+        // console.log(timer)
         timerCount.textContent = timer;
+        if (timer === 0) {
+            questionsDiv.classList.add("hide");
+            endScreen.classList.remove("hide");
+            
+        }
     }, 1000);
+
 
 }
 
