@@ -38,6 +38,7 @@ function timer(params) {
         if (timer === 0) {
             questionsDiv.classList.add("hide");
             endScreen.classList.remove("hide");
+            clearInterval(intervalId)
             
         }
     }, 1000);
