@@ -28,25 +28,30 @@ let feedback = document.querySelector("#feedback");
    })
 
 // timer
+let intervalId;
 function timer(params) {
-    let timer = 10
+    let timer = 60
     
-    let intervalId = setInterval(function() {
+    intervalId = setInterval(function() {
         timer--
         // console.log(timer)
         timerCount.textContent = timer;
         if (timer === 0) {
-            questionsDiv.classList.add("hide");
-            endScreen.classList.remove("hide");
-            clearInterval(intervalId)
+            loadEndScreen()
             
         }
     }, 1000);
-
-
+    
+    
 }
 
+// function to load end screen
+function loadEndScreen() {
+    questionsDiv.classList.add("hide");
+    endScreen.classList.remove("hide");
+    clearInterval(intervalId)
 
+}
 // displaying questions and answer options
 
 let questionIndex = 0; // increment this when clicked on an answer to go to the next question
@@ -56,6 +61,10 @@ let questionIndex = 0; // increment this when clicked on an answer to go to the 
 let choiceButton;
 
 function showQuestion() {
+    if (questionIndex === questions.length) { //exits code and loads end screen
+        return loadEndScreen()
+    }
+
     let choicesArray = questions[questionIndex].answers;
     questionTitle.textContent = questions[questionIndex].question;
     for ( let i = 0; i < choicesArray.length; i++) { // loop to display all choices
