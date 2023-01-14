@@ -15,56 +15,61 @@ let submitButton = document.querySelector("#submit");
 
 let feedback = document.querySelector("#feedback");
 
+// variable to use in the logic
 
-
-// starting quiz
-   // hide start screen and remove .hide class from questions screen
-
-   startButton.addEventListener("click", function (event) {
-       startScreen.classList.add("hide");
-       questionsDiv.classList.remove("hide");
-       showQuestion();
-       timer();
-   })
-
-// timer
 let intervalId;
+let questionIndex = 0; // increment this when clicked on an answer to go to the next question
+let choiceButton; 
+let timerValue = 60
+
+
+
+
+// EVENT LISTENERS
+// starting quiz
+// hide start screen and remove unhide questions screen
+// start timer
+
+startButton.addEventListener("click", function (event) {
+    startScreen.classList.add("hide");
+    questionsDiv.classList.remove("hide");
+    displayQuestion();
+    timer();
+})
+
+// selecting answers and moving to the next question
+choices.addEventListener("click", function(event) {
+    // questionIndex++;
+    if (event.target.matches("button")) {
+        console.log("test")
+        choices.textContent = "" //clears the buttons from previous question
+        questionIndex++
+        console.log(questionIndex);
+        displayQuestion()
+    }
+})
+
+// FUNCTIONS
+// timer
 function timer(params) {
-    let timer = 60
     
     intervalId = setInterval(function() {
-        timer--
+        timerValue--
         // console.log(timer)
-        timerCount.textContent = timer;
+        timerCount.textContent = timerValue;
         if (timer === 0) {
             loadEndScreen()
             
         }
     }, 1000);
-    
-    
 }
 
-// function to load end screen
-function loadEndScreen() {
-    questionsDiv.classList.add("hide");
-    endScreen.classList.remove("hide");
-    clearInterval(intervalId)
-
-}
 // displaying questions and answer options
-
-let questionIndex = 0; // increment this when clicked on an answer to go to the next question
-// let displayQuestion =  questionTitle.textContent = questions[questionIndex].question;
-
-
-let choiceButton;
-
-function showQuestion() {
+function displayQuestion() {
     if (questionIndex === questions.length) { //exits code and loads end screen
         return loadEndScreen()
     }
-
+    
     let choicesArray = questions[questionIndex].answers;
     questionTitle.textContent = questions[questionIndex].question;
     for ( let i = 0; i < choicesArray.length; i++) { // loop to display all choices
@@ -76,14 +81,12 @@ function showQuestion() {
     }
 }
 
-choices.addEventListener("click", function(event) {
-    // questionIndex++;
-    if (event.target.matches("button")) {
-        console.log("test")
-        choices.textContent = "" //clears the buttons from previous question
-        questionIndex++
-        console.log(questionIndex);
-        showQuestion()
-    }
-})
-    
+
+// load end screen
+function loadEndScreen() {
+    questionsDiv.classList.add("hide");
+    endScreen.classList.remove("hide");
+    clearInterval(intervalId);
+    document.querySelector(".timer").textContent = "";
+    finalScore.textContent = timerValue;
+}
