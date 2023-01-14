@@ -41,13 +41,23 @@ startButton.addEventListener("click", function (event) {
 choices.addEventListener("click", function(event) {
     // questionIndex++;
     if (event.target.matches("button")) {
-        console.log("test")
+        // console.log("test")
         choices.textContent = "" //clears the buttons from previous question
         questionIndex++
-        console.log(questionIndex);
+        // console.log(questionIndex);
         displayQuestion()
     }
 })
+
+
+submitButton.addEventListener("click", function(){
+    console.log(nameInput.value);
+    let name = nameInput.value;
+
+    localStorage.setItem(name, timerValue)
+})
+
+
 
 // FUNCTIONS
 // timer
@@ -86,7 +96,8 @@ function displayQuestion() {
 function loadEndScreen() {
     questionsDiv.classList.add("hide");
     endScreen.classList.remove("hide");
-    clearInterval(intervalId);
-    document.querySelector(".timer").textContent = "";
-    finalScore.textContent = timerValue;
+    clearInterval(intervalId);                         // stops timer
+    document.querySelector(".timer").textContent = ""; //hides timer
+    finalScore.textContent = timerValue;               //displays timer value as final score
 }
+
