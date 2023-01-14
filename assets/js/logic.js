@@ -54,7 +54,8 @@ submitButton.addEventListener("click", function(){
     console.log(nameInput.value);
     let name = nameInput.value;
 
-    localStorage.setItem(name, timerValue)
+    localStorage.setItem("name", name);
+    localStorage.setItem("score", timerValue);
 })
 
 
