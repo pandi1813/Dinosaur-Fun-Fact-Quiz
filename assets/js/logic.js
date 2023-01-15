@@ -50,15 +50,21 @@ choices.addEventListener("click", function(event) {
 })
 
 
+let index = 1
 submitButton.addEventListener("click", function(){
-    console.log(nameInput.value);
-    let name = nameInput.value;
-
-    localStorage.setItem("name", name);
-    localStorage.setItem("score", timerValue);
+    savePlayerDetails();
 })
 
-
+function savePlayerDetails() {
+    let player = "player" + index;
+    let playerName = nameInput.value;
+    let playerDetails = playerName + ": " + timerValue;
+    localStorage.setItem(player, playerDetails)
+    index++;
+    console.log(playerDetails)
+    console.log(player)
+    
+}
 
 // FUNCTIONS
 // timer
