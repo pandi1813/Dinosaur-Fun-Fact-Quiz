@@ -1,13 +1,30 @@
 let highScoresDiv = document.querySelector("#highscores")
-let displayName = localStorage.getItem("name");
-console.log(displayName);
+let playerNames = JSON.parse(localStorage.getItem("playerNames")) || [];
+let playerScores = JSON.parse(localStorage.getItem("playerScores")) || [];
+let clearScoresButton = document.getElementById("clear")
 
-let displayScore = localStorage.getItem("score");
-console.log(displayScore);
+let sortedScores = playerScores.sort();
+console.log("sort: " + sortedScores)
+let reversedScores = sortedScores.reverse();
+console.log( "reverse: " + reversedScores);
 
-let liElement = document.createElement("li");
-liElement.textContent = displayName + ": "+ displayScore;
 
-console.log(liElement.textContent)
+displayScores();
+function displayScores() {
+    for (let i = 0; i < reversedScores.length; i++) {
+        let nameIndex = playerScores.indexOf(reversedScores[i]);
+        console.log(nameIndex);
+        let playerName = playerNames[nameIndex];
+    
+        let liElement = document.createElement("li");
+        liElement.textContent = playerName + ": " + reversedScores[i]
+        highScoresDiv.append(liElement);
+    }
+    
+}
 
-highScoresDiv.append(liElement);
+clearScoresButton.addEventListener("click", function() {
+    localStorage.clear();
+    highScoresDiv.textContent = "";
+})
+

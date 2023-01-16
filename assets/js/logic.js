@@ -48,23 +48,42 @@ choices.addEventListener("click", function(event) {
         displayQuestion()
     }
 })
-
-
-let index = 1
+let storeNames = JSON.parse(localStorage.getItem("playerNames")) || [];
+console.log(storeNames);
+let storeScores = JSON.parse(localStorage.getItem("playerScores")) || [];
+console.log(storeScores)
+// let index = 1
 submitButton.addEventListener("click", function(){
-    savePlayerDetails();
+    
+     
+    storeNames.push(nameInput.value);
+    console.log(storeNames);
+    localStorage.setItem("playerNames", JSON.stringify(storeNames));
+
+    storeScores.push(timerValue);
+    localStorage.setItem("playerScores", JSON.stringify(storeScores));
+
+    console.log(localStorage)
 })
 
-function savePlayerDetails() {
-    let player = "player" + index;
-    let playerName = nameInput.value;
-    let playerDetails = playerName + ": " + timerValue;
-    localStorage.setItem(player, playerDetails)
-    index++;
-    console.log(playerDetails)
-    console.log(player)
+
+
+// let namesArray = [];
+// let scoresArray;
+// let storeName = localStorage.setItem("playerNames",JSON.stringify(namesArray));
+// let storeScore = localStorage.setItem("playerScore", JSON.stringify(scoresArray));
+
+
+// scoresArray = localStorage.getItem(JSON.parse(storeScore) || []);
+
+// function savePlayerDetails() {
+//     scoresArray.push(timerValue);
+//     namesArray.push(nameInput.value)
+//     console.log(namesArray);
+//     console.log(scoresArray);
+// }
+
     
-}
 
 // FUNCTIONS
 // timer
@@ -76,7 +95,6 @@ function timer(params) {
         timerCount.textContent = timerValue;
         if (timer === 0) {
             loadEndScreen()
-            
         }
     }, 1000);
 }

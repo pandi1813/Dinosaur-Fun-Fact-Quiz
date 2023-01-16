@@ -33,3 +33,8 @@
     // retrieve score from localStorage
 
 //all questions answered -> end quiz, display high score + input for player name
+
+// HIGH SCORES
+    //array to store scores
+    //array to store names 
+        // .push new scores
