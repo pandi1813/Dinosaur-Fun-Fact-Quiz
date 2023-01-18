@@ -19,7 +19,7 @@ let feedback = document.querySelector("#feedback");
 
 let intervalId;
 let questionIndex = 0; // increment this when clicked on an answer to go to the next question
-let choiceButton; 
+let choiceButton;
 let timerValue = 60
 
 
@@ -38,24 +38,25 @@ startButton.addEventListener("click", function (event) {
 })
 
 // selecting answers and moving to the next question
-choices.addEventListener("click", function(event) {
+choices.addEventListener("click", function (event) {
     // questionIndex++;
     if (event.target.matches("button")) {
         // console.log("test")
-        choices.textContent = "" //clears the buttons from previous question
+        choices.textContent = ""; //clears the buttons from previous question
         questionIndex++
         // console.log(questionIndex);
-        displayQuestion()
-    }
-})
+        displayQuestion();
+    };
+
+});
 let storeNames = JSON.parse(localStorage.getItem("playerNames")) || [];
 console.log(storeNames);
 let storeScores = JSON.parse(localStorage.getItem("playerScores")) || [];
-console.log(storeScores)
-// let index = 1
-submitButton.addEventListener("click", function(){
-    
-     
+console.log(storeScores);
+
+submitButton.addEventListener("click", function () {
+
+
     storeNames.push(nameInput.value);
     console.log(storeNames);
     localStorage.setItem("playerNames", JSON.stringify(storeNames));
@@ -63,33 +64,19 @@ submitButton.addEventListener("click", function(){
     storeScores.push(timerValue);
     localStorage.setItem("playerScores", JSON.stringify(storeScores));
 
-    console.log(localStorage)
+    console.log(localStorage);
 })
 
 
 
-// let namesArray = [];
-// let scoresArray;
-// let storeName = localStorage.setItem("playerNames",JSON.stringify(namesArray));
-// let storeScore = localStorage.setItem("playerScore", JSON.stringify(scoresArray));
 
 
-// scoresArray = localStorage.getItem(JSON.parse(storeScore) || []);
-
-// function savePlayerDetails() {
-//     scoresArray.push(timerValue);
-//     namesArray.push(nameInput.value)
-//     console.log(namesArray);
-//     console.log(scoresArray);
-// }
-
-    
 
 // FUNCTIONS
 // timer
 function timer(params) {
-    
-    intervalId = setInterval(function() {
+
+    intervalId = setInterval(function () {
         timerValue--
         // console.log(timer)
         timerCount.textContent = timerValue;
@@ -104,15 +91,15 @@ function displayQuestion() {
     if (questionIndex === questions.length) { //exits code and loads end screen
         return loadEndScreen()
     }
-    
+
     let choicesArray = questions[questionIndex].answers;
     questionTitle.textContent = questions[questionIndex].question;
-    for ( let i = 0; i < choicesArray.length; i++) { // loop to display all choices
+    for (let i = 0; i < choicesArray.length; i++) { // loop to display all choices
         choiceButton = document.createElement("button");
         let choice = choicesArray[i];
         choices.append(choiceButton);
         choiceButton.textContent = choice;
-        
+
     }
 }
 
