@@ -20,7 +20,7 @@ let feedback = document.querySelector("#feedback");
 let intervalId;
 let questionIndex = 0; // increment this when clicked on an answer to go to the next question
 let choiceButton;
-let timerValue = 10
+let timerValue = 60
 
 
 
@@ -43,17 +43,31 @@ choices.addEventListener("click", function (event) {
     if (event.target.matches("button")) {
         // console.log("test")
         choices.textContent = ""; //clears the buttons from previous question
-        questionIndex++
         // console.log(questionIndex);
+        let buttonIndex = event.target.getAttribute("data-index")
+        
+        deductPoint(buttonIndex)
+        questionIndex++
         displayQuestion();
-        let buttonIndex = choiceButton.getAttribute("data-index")
-        console.log(buttonIndex)
-        if (buttonIndex !== questions[i].correct) {
-            timerValue-=10
-        }
     };
-
 });
+
+//-----------------
+    function deductPoint(indexNumber) {
+        let correctAnswer = questions[questionIndex].correct
+        console.log("correct: " + correctAnswer)
+        console.log(indexNumber)
+        if (indexNumber == correctAnswer ) {
+        } else{
+            timerValue-=10
+
+        }
+        
+    }
+// ----------------
+
+
+
 let storeNames = JSON.parse(localStorage.getItem("playerNames")) || [];
 console.log(storeNames);
 let storeScores = JSON.parse(localStorage.getItem("playerScores")) || [];
