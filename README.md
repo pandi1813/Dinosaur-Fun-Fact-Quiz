@@ -47,7 +47,7 @@ After creating the question database I added functions to create a timer and to 
 
 - How to link into html elements using the DOM API and how to modify them.
 - How to use event listeners to create responsive pages
-To see how you can add code snippets, see below:
+
 
 
 

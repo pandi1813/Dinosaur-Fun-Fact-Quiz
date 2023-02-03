@@ -20,12 +20,12 @@ let feedback = document.querySelector("#feedback");
 let intervalId;
 let questionIndex = 0; // increment this when clicked on an answer to go to the next question
 let choiceButton;
-let timerValue = 60
+let timerValue = 10
 
 
 
 
-// EVENT LISTENERS
+// **************** EVENT LISTENERS ******************
 // starting quiz
 // hide start screen and remove unhide questions screen
 // start timer
@@ -46,6 +46,11 @@ choices.addEventListener("click", function (event) {
         questionIndex++
         // console.log(questionIndex);
         displayQuestion();
+        let buttonIndex = choiceButton.getAttribute("data-index")
+        console.log(buttonIndex)
+        if (buttonIndex !== questions[i].correct) {
+            timerValue-=10
+        }
     };
 
 });
@@ -72,7 +77,7 @@ submitButton.addEventListener("click", function () {
 
 
 
-// FUNCTIONS
+// ****************** FUNCTIONS *********************
 // timer
 function timer(params) {
 
@@ -80,7 +85,7 @@ function timer(params) {
         timerValue--
         // console.log(timer)
         timerCount.textContent = timerValue;
-        if (timer === 0) {
+        if (timerValue === 0) {
             loadEndScreen()
         }
     }, 1000);
@@ -96,6 +101,7 @@ function displayQuestion() {
     questionTitle.textContent = questions[questionIndex].question;
     for (let i = 0; i < choicesArray.length; i++) { // loop to display all choices
         choiceButton = document.createElement("button");
+        choiceButton.setAttribute("data-index", i)
         let choice = choicesArray[i];
         choices.append(choiceButton);
         choiceButton.textContent = choice;
