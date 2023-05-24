@@ -116,6 +116,7 @@ function displayQuestion() {
     for (let i = 0; i < choicesArray.length; i++) { // loop to display all choices
         choiceButton = document.createElement("button");
         choiceButton.setAttribute("data-index", i)
+        // choiceButton.setAttribute("class", "choice-btn")
         let choice = choicesArray[i];
         choices.append(choiceButton);
         choiceButton.textContent = choice;
