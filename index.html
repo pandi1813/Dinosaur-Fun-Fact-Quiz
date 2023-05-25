@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-gb">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Coding Quiz</title>
 
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Coding Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
 
-  <body>
-    <div class="scores"><a href="highscores.html">View Highscores</a></div>
+<body>
+  <div class="scores"><a href="highscores.html">View Highscores</a></div>
 
-    <div class="timer">Time: <span id="time">0</span></div>
+  <div class="timer">Time: <span id="time">0</span></div>
 
-    <div class="wrapper">
-      <div id="start-screen" class="start">
-        <h1>Dinosaur Fun Facts Quiz</h1>
-        <p>
-          Try to answer the following dinosaur-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
-        </p>
-        <button id="start">Start Quiz</button>
-      </div>
-
-      <div id="questions" class="hide">
-        <h2 id="question-title"></h2>
-        <div id="choices" class="choices"></div>
-      </div>
-
-      <div id="end-screen" class="hide">
-        <h2>All done!</h2>
-        <p>Your final score is <span id="final-score"></span>.</p>
-        <p>
-          Enter initials: <input type="text" id="initials" max="3" />
-          <button id="submit">Submit</button>
-        </p>
-      </div>
-
-      <div id="feedback" class="feedback hide"></div>
+  <div class="wrapper">
+    <div id="start-screen" class="start">
+      <h1>Dinosaur Quiz</h1>
+      <p>
+        Try to answer the following dinosaur-related questions within the time
+        limit. Keep in mind that incorrect answers will penalize your
+        score/time by ten seconds!
+      </p>
+      <button id="start">Start Quiz</button>
     </div>
-    <img id="t-rex" src="./assets/images/pngtree-red-t-rex-dinosaur-drinking-apple-juice-cartoon-vector-png-image_9165150.png" alt="T-rex cartoon img">
-    <img id="tricey" src="./assets/images/Triceratops-step_09.png" alt="triceratops img">
 
-    <script src="./assets/js/questions.js"></script>
-    <script src="./assets/js/logic.js"></script>
+    <div id="questions" class="hide">
+      <h2 id="question-title"></h2>
+      <div id="choices" class="choices"></div>
+    </div>
 
-    <!-- <script src="./assets/js/scores.js"></script> -->
-  </body>
+    <div id="end-screen" class="hide">
+      <h2>All done!</h2>
+      <p>Your final score is <span id="final-score"></span>.</p>
+      <p>
+        Enter initials: <input type="text" id="initials" max="3" />
+        <button id="submit">Submit</button>
+      </p>
+    </div>
+
+    <div id="feedback" class="feedback hide"></div>
+  </div>
+  <img id="t-rex"
+    src="./assets/images/pngtree-red-t-rex-dinosaur-drinking-apple-juice-cartoon-vector-png-image_9165150.png"
+    alt="T-rex cartoon img">
+  <img id="tricey" src="./assets/images/Triceratops-step_09.png" alt="triceratops img">
+
+  <script src="./assets/js/questions.js"></script>
+  <script src="./assets/js/logic.js"></script>
+
+  <!-- <script src="./assets/js/scores.js"></script> -->
+</body>
+
 </html>
