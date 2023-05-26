@@ -4,6 +4,7 @@ let timerCount = document.querySelector("#time");
 let startScreen = document.querySelector("#start-screen");
 let startButton = document.querySelector("#start");
 
+
 let questionsDiv = document.querySelector("#questions");
 let questionTitle = document.querySelector("#question-title");
 let choices = document.querySelector("#choices");
@@ -52,6 +53,8 @@ choices.addEventListener("click", function (event) {
     };
 });
 
+
+
 //-----------------
     function deductPoint(indexNumber) {
         let correctAnswer = questions[questionIndex].correct
@@ -83,6 +86,8 @@ submitButton.addEventListener("click", function () {
     storeScores.push(timerValue);
     localStorage.setItem("playerScores", JSON.stringify(storeScores));
 
+    // endScreen.classList.add("hide")
+    // startScreen.classList.remove("hide")
     console.log(localStorage);
 })
 
